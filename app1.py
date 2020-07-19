@@ -61,11 +61,11 @@ def main():
     </div>
     """
     st.markdown(html_temp,unsafe_allow_html=True)
-    variance = st.text_input("CropType","Type Here")
-    skewness = st.text_input("CropDays","Type Here")
-    curtosis = st.text_input("SoilMoisture","Type Here")
-    entropy = st.text_input("temp","Type Here")
-    entropy1 = st.text_input("Humidity","Type Here")
+    variance = st.text_input("CropType","")
+    skewness = st.text_input("CropDays","")
+    curtosis = st.text_input("SoilMoisture","")
+    entropy = st.text_input("temp","")
+    entropy1 = st.text_input("Humidity","")
     result=""
     if st.button("Predict"):
       
