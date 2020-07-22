@@ -20,32 +20,7 @@ def welcome():
 
 #@app.route('/predict',methods=["Get"])
 def predict_note_authentication(variance,skewness,curtosis,entropy, entropy1):
-    
-    """Let's Authenticate the Banks Note 
-    This is using docstrings for specifications.
-    ---
-    parameters:  
-      - name: variance
-        in: query
-        type: number
-        required: true
-      - name: skewness
-        in: query
-        type: number
-        required: true
-      - name: curtosis
-        in: query
-        type: number
-        required: true
-      - name: entropy
-        in: query
-        type: number
-        required: true
-    responses:
-        200:
-            description: The output values
-        
-    """
+   
    
     prediction=classifier.predict([[variance,skewness,curtosis,entropy, entropy1]])
     print(prediction)
@@ -61,7 +36,13 @@ def main():
     </div>
     """
     st.markdown(html_temp,unsafe_allow_html=True)
-    variance = st.text_input("CropType","")
+     
+    display = ("Wheat", "Ground Nuts","Garden flowers","Maize","Paddy","Potato","pulse","SugerCane","coffee")
+
+    options = list(range(len(display)))
+
+    variance = st.selectbox("CropType", options, format_func=lambda x: display[x])
+    
     skewness = st.text_input("CropDays","")
     curtosis = st.text_input("SoilMoisture","")
     entropy = st.text_input("temp","")
