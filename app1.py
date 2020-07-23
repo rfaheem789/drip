@@ -1,27 +1,16 @@
 
-
-import numpy as np
 import pickle
-import pandas as pd
-#from flasgger import Swagger
 import streamlit as st 
-
-from PIL import Image
-
-#app=Flask(__name__)
-#Swagger(app)
-
 pickle_in = open("filename1.pkl","rb")
 classifier=pickle.load(pickle_in)
 
-#@app.route('/')
+
 def welcome():
     return "Welcome All"
 
-#@app.route('/predict',methods=["Get"])
+
 def predict_note_authentication(variance,skewness,curtosis,entropy, entropy1):
-   
-   
+  
     prediction=classifier.predict([[variance,skewness,curtosis,entropy, entropy1]])
     print(prediction)
     return prediction
@@ -31,22 +20,24 @@ def predict_note_authentication(variance,skewness,curtosis,entropy, entropy1):
 def main():
     st.title("Drip Irrigation System ")
     html_temp = """
-    <div style="background-color:tomato;padding:10px">
-    <h2 style="color:white;text-align:center;">Drip Irrigation System ML App </h2>
+    <div style="background-color:green;padding:10px">
+    <h2 style="color:white;text-align:center;">Drip Irrigation System ML App</h2>
+    <h3 style="color:white;text-align:center;">اپنی فصلوں کیلئے آبپاشی کی ضرورت تلاش کریں </h3>
     </div>
     """
     st.markdown(html_temp,unsafe_allow_html=True)
-     
-    display = ("Wheat", "Ground Nuts","Garden flowers","Maize","Paddy","Potato","pulse","SugerCane","coffee")
+    display = ("Wheat/گندم", "Ground Nuts/مونگ پھلی","Garden flowers/باغ کے پھول","Maize/مکئی","Paddy/چاول","Potato/آلو","pulse/دالوں کی فصل","SugerCane/گنا","coffee/کافی")
 
     options = list(range(len(display)))
 
-    variance = st.selectbox("CropType", options, format_func=lambda x: display[x])
+    variance = st.selectbox("Crop Type", options, format_func=lambda x: display[x])
+   # variance = st.text_input("CropType","")
+    skewness = st.text_input("Crop Days/فصلوں کے دن","")
+    curtosis = st.text_input("Soil Moisture/مٹی کی نمی","")
+    entropy = st.text_input("temperature/درجہ حرارت ","")
+    entropy1 = st.text_input("Humidity/نمی ","")
     
-    skewness = st.text_input("CropDays","")
-    curtosis = st.text_input("SoilMoisture","")
-    entropy = st.text_input("temp","")
-    entropy1 = st.text_input("Humidity","")
+ 
     result=""
     if st.button("Predict"):
       
@@ -54,6 +45,7 @@ def main():
     if(result==1):
        
        st.success('Irrigation is required {}'.format(result))
+   
     else:
       
       st.success('Irrigation is not required {}'.format(result))
@@ -64,6 +56,9 @@ def main():
 
 if __name__=='__main__':
     main()
+    
+    
+    
     
     
     
