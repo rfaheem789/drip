@@ -9,7 +9,6 @@ def welcome():
     return "Welcome All"
 
 def predict_note_authentication(variance,skewness,curtosis,entropy, entropy1):
-  
     prediction=classifier.predict([[variance,skewness,curtosis,entropy, entropy1]])
     print(prediction)
     return prediction
