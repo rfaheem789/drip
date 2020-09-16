@@ -1,6 +1,10 @@
 
 import pickle
 import streamlit as st 
+from PIL import Image
+from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__)
 pickle_in = open("filename1.pkl","rb")
 classifier=pickle.load(pickle_in)
 
