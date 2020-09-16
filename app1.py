@@ -8,7 +8,6 @@ classifier=pickle.load(pickle_in)
 def welcome():
     return "Welcome All"
 
-@app.route('/predict',methods=["Get"])
 def predict_note_authentication(variance,skewness,curtosis,entropy, entropy1):
   
     prediction=classifier.predict([[variance,skewness,curtosis,entropy, entropy1]])
@@ -51,18 +50,7 @@ def main():
       st.success('Irrigation is not required {}'.format(result))
    
     
-@app.route('/predict_api',methods=['GET', 'POST'])
-def predict_api():
-    '''
-    For direct API calls trought request
-    '''   
-    data = request.get_json(force=True)
-    recommended =classifier.predict(data)
-    
-   
 
-    
-    return jsonify(recommended=recommended)
 
 if __name__=='__main__':
     main()
