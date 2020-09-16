@@ -50,9 +50,19 @@ def main():
       
       st.success('Irrigation is not required {}'.format(result))
    
-    if st.button("About"):
-        st.text("Lets LEarn")
-        st.text("Built with Streamlit")
+    
+  @app.route('/predict_api',methods=['GET', 'POST'])
+def predict_api():
+    '''
+    For direct API calls trought request
+    '''   
+    data = request.get_json(force=True)
+recommended =classifier.predict(data)
+    
+   
+
+    
+    return jsonify(recommended=recommended)
 
 if __name__=='__main__':
     main()
