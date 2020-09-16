@@ -52,6 +52,21 @@ def main():
       
       st.success('Irrigation is not required {}'.format(result))
    
+@app.route('/predict_api',methods=['GET', 'POST'])
+def predict_api():
+    '''
+    For direct API calls trought request
+    '''   
+    data = request.get_json(force=True)
+   
+    
+    recommended =classifier.predict(data)
+   
+   
+
+    
+    return jsonify(recommended=recommended)
+
     
 
 
