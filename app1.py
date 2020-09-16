@@ -8,7 +8,7 @@ classifier=pickle.load(pickle_in)
 def welcome():
     return "Welcome All"
 
-
+@app.route('/predict',methods=["Get"])
 def predict_note_authentication(variance,skewness,curtosis,entropy, entropy1):
   
     prediction=classifier.predict([[variance,skewness,curtosis,entropy, entropy1]])
