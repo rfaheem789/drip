@@ -52,7 +52,7 @@ def main():
    
     
 @app.route('/predict_api',methods=['GET', 'POST'])
- def predict_api():
+def predict_api():
     '''
     For direct API calls trought request
     '''   
