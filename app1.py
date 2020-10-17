@@ -46,11 +46,11 @@ def main():
         result=predict_note_authentication(variance,skewness,curtosis,entropy, entropy1)
     if(result==1):
        
-       st.success('Irrigation is required {}'.format(result))
+       st.success('Irrigation is required')
    
     else:
       
-      st.success('Irrigation is not required {}'.format(result))
+      st.success('Irrigation is not required')
    
 @app.route('/predict_api',methods=['GET', 'POST'])
 def predict_api():
