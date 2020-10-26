@@ -60,9 +60,9 @@ def predict_api():
     data = request.get_json(force=True)
    
     
+   
+   final_features = [np.array(data)]
     recommended =classifier.predict(data)
-   
-   
 
     
     return jsonify(recommended=recommended)
