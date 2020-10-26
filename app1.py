@@ -61,9 +61,9 @@ def predict_api():
    
     
    
-    final_features = [np.array(data)]
+     final_features = [np.array(data)]
     recommended =classifier.predict(data)
-
+ 
     
     return jsonify(recommended=recommended)
 
